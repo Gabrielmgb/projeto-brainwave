@@ -1,11 +1,16 @@
-import React from 'react'
+import ButtonGradient from "./assets/svg/ButtonGradient";
+import Button from "./components/Button";
 
 const App = () => {
   return (
-    <div className='bg-red-600'>
-      <p className='text-blue-500 text-center w-full mx-auto'>Olaaaa mundo</p>
-    </div>
-  )
-}
+      <>
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
+          <Button className="mt-10">Something</Button>
+        </div>
+        <ButtonGradient />
+      </>
+  );
+};
 
-export default App
+export default App;
