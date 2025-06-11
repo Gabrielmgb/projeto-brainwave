@@ -17,11 +17,11 @@
   scroll-behavior: smooth
 }
 
-@layer base {
+/* @layer base {
   body {
     @apply font-sans bg-n-8 text-n-1 text-base;
   }
-}
+} */
 
 .rotate-45 {
   @apply rotate-[45deg]
