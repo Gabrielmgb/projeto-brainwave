@@ -1,33 +1,73 @@
+/* Importa Tailwind v4 */
 @import "tailwindcss";
 
+/* Importa fontes externas */
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 
+/* Tema customizado com CSS variables */
+@theme {
+  /* Cores principais */
+  --color-color-1: #AC6AFF;
+  --color-color-2: #FFC876;
+  --color-color-3: #FF776F;
+  --color-color-4: #7ADB78;
+  --color-color-5: #858DFF;
+  --color-color-6: #FF98E2;
 
+  --color-stroke-1: #26242C;
 
+  --color-n-1: #FFFFFF;
+  --color-n-2: #CAC6DD;
+  --color-n-3: #ADA8C3;
+  --color-n-4: #757185;
+  --color-n-5: #3F3A52;
+  --color-n-6: #252134;
+  --color-n-7: #15131D;
+  --color-n-8: #0E0C15;
+  --color-n-9: #474060;
+  --color-n-10: #43435C;
+  --color-n-11: #1B1B2E;
+  --color-n-12: #2E2A41;
+  --color-n-13: #6C7275;
 
-:root {
-  --font-sora: "Sora", sans-serif;
+  /* Fontes */
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-code: "Source Code Pro", monospace;
   --font-grotesk: "Space Grotesk", sans-serif;
-  color-scheme: dark;
+
+  /* Tipografia */
+  --letter-spacing-tagline: 0.15em;
+
+  /* Espaçamentos */
+  --spacing-0\.25: 0.0625rem;
+  --spacing-7\.5: 1.875rem;
+  --spacing-15: 3.75rem;
+
+  /* Opacidade */
+  --opacity-15: 0.15;
+
+  /* Transições */
+  --duration-default: 200ms;
+  --timing-default: linear;
+
+  /* Z-index */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 5;
+
+  /* Bordas */
+  --border-width: 0.0625rem;
+
+  /* Gradientes */
+  --bg-radial-gradient: radial-gradient(var(--tw-gradient-stops));
+  --bg-conic-gradient: conic-gradient(from 225deg, #FFC876, #79FFF7, #9F53FF, #FF98E2, #FFC876);
 }
 
-* {
-  scroll-behavior: smooth
-}
-
-/* Definições globais de tema (tokens) */
-@theme {
-  --color-n-1: #f0f0f0;
-  --color-n-8: #121212;
-  --font-sans: var(--font-sora);
-  --font-mono: var(--font-code);
-  --font-grotesk: var(--font-grotesk);
-}
-
-/* Estilos base globais */
+/* Base global */
 @layer base {
   body {
     font-family: var(--font-sans);
@@ -37,24 +77,48 @@
   }
 }
 
-@layer utilities {
-  /* Rotação positiva */
-  .rotate-45  { @apply rotate-[45deg]; }
-  .rotate-90  { @apply rotate-[90deg]; }
-  .rotate-135 { @apply rotate-[135deg]; }
-  .rotate-180 { @apply rotate-[180deg]; }
-  .rotate-225 { @apply rotate-[225deg]; }
-  .rotate-270 { @apply rotate-[270deg]; }
-  .rotate-315 { @apply rotate-[315deg]; }
-  .rotate-360 { @apply rotate-[360deg]; }
+/* Componentes reutilizáveis */
+@layer components {
+  .container {
+    @apply max-w-[77.5rem] mx-auto px-5 md:px-10 lg:px-[3.75rem] xl:max-w-[87.5rem];
+  }
 
-  /* Rotação negativa */
-  .-rotate-45  { @apply rotate-[-45deg]; }
-  .-rotate-90  { @apply rotate-[-90deg]; }
-  .-rotate-135 { @apply rotate-[-135deg]; }
-  .-rotate-180 { @apply rotate-[-180deg]; }
-  .-rotate-225 { @apply rotate-[-225deg]; }
-  .-rotate-270 { @apply rotate-[-270deg]; }
-  .-rotate-315 { @apply rotate-[-315deg]; }
-  .-rotate-360 { @apply rotate-[-360deg]; }
+  .h1 {@apply font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-[3.75rem] leading-tight;}
+  .h2 {@apply text-3xl md:text-4xl xl:text-[3rem] leading-snug;}
+  .h3 {@apply text-3xl md:text-[2.5rem] leading-normal;}
+  .h4 {@apply text-2xl leading-normal;}
+  .h5 {@apply text-xl leading-normal;}
+  .h6 {@apply font-semibold text-lg leading-8;}
+
+  .body-1 {@apply text-base md:text-lg lg:text-xl leading-relaxed;}
+  .body-2 {@apply font-light text-sm md:text-base leading-6;}
+  .caption {@apply text-sm;}
+  .tagline {@apply font-grotesk font-light text-xs tracking-[var(--letter-spacing-tagline)] uppercase;}
+  .quote {@apply font-code text-lg leading-normal;}
+  .button {@apply font-code text-xs font-bold uppercase tracking-wider;}
+}
+
+/* Utilitários personalizados */
+@layer utilities {
+  .tap-highlight-color {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  .rotate-45  {@apply rotate-[45deg];}
+  .rotate-90  {@apply rotate-[90deg];}
+  .rotate-135 {@apply rotate-[135deg];}
+  .rotate-180 {@apply rotate-[180deg];}
+  .rotate-225 {@apply rotate-[225deg];}
+  .rotate-270 {@apply rotate-[270deg];}
+  .rotate-315 {@apply rotate-[315deg];}
+  .rotate-360 {@apply rotate-[360deg];}
+
+  .-rotate-45  {@apply rotate-[-45deg];}
+  .-rotate-90  {@apply rotate-[-90deg];}
+  .-rotate-135 {@apply rotate-[-135deg];}
+  .-rotate-180 {@apply rotate-[-180deg];}
+  .-rotate-225 {@apply rotate-[-225deg];}
+  .-rotate-270 {@apply rotate-[-270deg];}
+  .-rotate-315 {@apply rotate-[-315deg];}
+  .-rotate-360 {@apply rotate-[-360deg];}
 }
